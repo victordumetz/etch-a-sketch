@@ -1,0 +1,40 @@
+body,
+html {
+  background-color: bisque;
+}
+
+h1 {
+  font-size: 72px
+}
+
+.main-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.sketch-zone {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sidebar {
+  flex: 1 1 auto;
+  padding: 0 40px;
+  width: 20%;
+}
+
+.sketchpad {
+  background-color: white;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  height: 500px;
+  width: 500px;
+}
