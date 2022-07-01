@@ -19,19 +19,41 @@ function createGrid(size) {
     }
   }
 }
-
 createGrid(resolutionRange.value);
 
-// updates slider label
+// update slider label
 resolutionRange.addEventListener('input', () => {
   resolutionRangeLabel.textContent = `${resolutionRange.value}x${resolutionRange.value}`;
 });
 
-// resets and recreate grid when value changed
+// stores the state of the mouse
+let mouseDown = false;
+document.body.onmousedown = () => {
+  mouseDown = true;
+};
+document.body.onmouseup = () => {
+  mouseDown = false;
+};
+
+// color tiles when hovered
+function makeTilesColorable() {
+  const tiles = document.querySelectorAll('.tile');
+  tiles.forEach((tile) => {
+    tile.addEventListener('mouseover', (e) => {
+      if (mouseDown) {
+        e.target.style.backgroundColor = 'black';
+      }
+    });
+  });
+}
+makeTilesColorable();
+
+// reset and recreate grid when value changed
 resolutionRange.addEventListener('change', () => {
   while (sketchpad.lastElementChild) {
     sketchpad.removeChild(sketchpad.lastElementChild);
   }
 
   createGrid(resolutionRange.value);
+  makeTilesColorable();
 });
